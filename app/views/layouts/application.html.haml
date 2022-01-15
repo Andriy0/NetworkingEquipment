@@ -1,0 +1,40 @@
+!!!
+%html
+  %head
+    %title NetworkingEquipment
+    %meta{name: "viewport", content: "device-width,initial-scale=1"}
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag "application"
+    = javascript_include_tag "application", "data-turbo-track": "reload", defer: true
+
+    %body.bg-light
+      %header
+        -# navbar
+        %nav.navbar.navbar-expand-md.navbar-light.bg-white
+          .container-xxl
+            = link_to 'NetworkingEquipment', root_path, class: 'nav-link text-primary display-6'
+            
+            -# toggle button
+            %button.navbar-toggler{type: "button", "data-bs-toggle": "collapse", "data-bs-target": "#main-nav", "aria-controls": "main-nav", "aria-expanded": "false", "aria-label": "Toggle navigation"}
+              %span.navbar-toggler-icon
+
+            -# navbar links
+            .collapse.navbar-collapse.justify-content-end.align-center#main-nav
+              %ul.navbar-nav
+                %li.nav-item
+                  = link_to 'Vendors', vendors_path, class: 'nav-link text-white btn btn-secondary'
+                %li.nav-item
+                  = link_to 'New adapter', new_adapter_path, class: 'nav-link text-white btn btn-secondary ms-md-3'
+
+      %main.py-4.my-3
+        - flash.each do |k, v|
+          = tag.div v, class: "container alert alert-#{k}", role: 'alert'
+        
+        = yield
+
+      %footer.p-4.bg-white
+        .container.text-center
+          &copy;
+          = "Copyright #{Time.now.year} Networking Equipment"

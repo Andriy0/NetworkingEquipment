@@ -1,0 +1,19 @@
+.text-center
+  
+  %h1.display-5.text-secondary.mb-5 Vendors
+
+  = link_to 'New vendor', new_vendor_path, class: 'btn btn-primary btn-lg mb-5'
+  
+.row.justify-content-around
+  %table.table.col-auto
+    %tr
+      %th Name
+      %th Actions
+    - @vendors.each do |vendor|
+      %tr
+        %td
+          = vendor.name
+        %td
+          = link_to 'Edit', edit_vendor_path(vendor), class: 'btn btn-sm btn-outline-secondary'
+          = link_to 'Delete', vendor_path(vendor), class: 'btn btn-sm btn-outline-danger',
+            data: {method: :delete, confirm: "Are you sure?"}

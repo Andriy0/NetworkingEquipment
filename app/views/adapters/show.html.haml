@@ -1,0 +1,16 @@
+.text-center
+  %h1.display-5.text-secondary.mb-5 More details
+
+  %h4.mb-4= @adapter.name
+  
+.d-flex.justify-content-around
+  .d-inline-block
+    %p= @adapter.vendor.name
+    %p= @adapter.adapter_type.name
+    %p= @adapter.connection_type.name
+    
+.text-center
+  = link_to 'Home', root_path, class: 'btn btn-primary'
+  = link_to 'Edit', edit_adapter_path(@adapter), class: 'btn btn-secondary'
+  = link_to 'Destroy', adapter_path(@adapter), class: 'btn btn-danger',
+    data: {method: :delete, confirm: "Are you sure?"}

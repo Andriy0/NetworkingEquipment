@@ -1,0 +1,10 @@
+= render 'shared/errors', object: @vendor
+
+= form_with model: [ @vendor ] do | f |
+  
+  .mb-3.form-group
+    = f.label :name, class: 'mb-1'
+
+    = f.text_area :name, class: 'form-control'
+
+  = f.submit "#{btn_val}", class: 'btn btn-primary'

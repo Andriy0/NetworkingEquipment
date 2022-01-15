@@ -1,0 +1,28 @@
+= render 'shared/errors', object: @adapter
+
+= form_with model: @adapter do |f|
+  
+  .mb-3.form-group
+    = f.label :name, class: 'mb-1'
+
+    = f.text_area :name, placeholder: "Name", class: 'form-control'
+
+  .mb-3.form-group
+    = f.label :vendor_id, class: 'mb-1'
+
+    = f.collection_select :vendor_id, Vendor.all, :id, :name,
+      {}, class: 'form-control'
+
+  .mb-3.form-group
+    = f.label :adapter_type_id, class: 'mb-1'
+
+    = f.collection_select :adapter_type_id, AdapterType.all, :id, :name,
+      {}, class: 'form-control'
+
+  .mb-3.form-group
+    = f.label :connection_type_id, class: 'mb-1'
+
+    = f.collection_select :connection_type_id, ConnectionType.all, :id, :name,
+      {}, class: 'form-control'
+
+  = f.submit "#{btn_val}", class: 'btn btn-primary'

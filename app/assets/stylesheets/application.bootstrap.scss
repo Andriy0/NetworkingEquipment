@@ -1,0 +1,19 @@
+@import 'bootstrap/scss/bootstrap';
+
+table {
+  width: auto !important;
+}
+
+form {
+  max-width: 600px;
+}
+
+html {
+  font-size: 1rem;
+}
+
+// @include media-breakpoint-up(md) {
+//   html {
+//     font-size: 1.2rem;
+//   }
+// }
