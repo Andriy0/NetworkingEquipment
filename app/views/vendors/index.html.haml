@@ -1,19 +1,23 @@
-.text-center
-  
+.container.text-center
   %h1.display-5.text-secondary.mb-5 Vendors
 
-  = link_to 'New vendor', new_vendor_path, class: 'btn btn-primary btn-lg mb-5'
-  
-.row.justify-content-around
-  %table.table.col-auto
-    %tr
-      %th Name
-      %th Actions
-    - @vendors.each do |vendor|
-      %tr
-        %td
-          = vendor.name
-        %td
-          = link_to 'Edit', edit_vendor_path(vendor), class: 'btn btn-sm btn-outline-secondary'
-          = link_to 'Delete', vendor_path(vendor), class: 'btn btn-sm btn-outline-danger',
-            data: {method: :delete, confirm: "Are you sure?"}
+.container
+  = pagination @pagy
+
+.container-xl.my-4
+  .row.justify-content-center.g-5
+
+    .col-sm-12.col-md-auto
+      %table.table.mx-auto
+        %tr
+          %th Name
+          %th Actions
+        = render @vendors
+        
+    .col-sm-6.col-md-4.text-center.my-md-auto
+      %article.card.border-0.shadow.py-3
+        .card-body
+          = render 'form'
+            
+.container
+  = pagination @pagy

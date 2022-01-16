@@ -25,4 +25,9 @@
     = f.collection_select :connection_type_id, ConnectionType.all, :id, :name,
       {}, class: 'form-control'
 
-  = f.submit "#{btn_val}", class: 'btn btn-primary'
+  .container.mt-5
+    .row.justify-content-center
+      .col-auto
+        = f.submit "#{btn_val}", class: 'btn btn-outline-primary'
+      .col-auto
+        = link_to 'Home', root_path, class: 'btn btn-outline-secondary'

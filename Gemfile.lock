@@ -114,6 +114,7 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.12.5-x86_64-linux)
       racc (~> 1.4)
+    pagy (5.7.6)
     puma (5.5.2)
       nio4r (~> 2.0)
     racc (1.6.0)
@@ -186,6 +187,7 @@ DEPENDENCIES
   haml-rails
   jbuilder
   jsbundling-rails
+  pagy (~> 5.7.6)
   puma (~> 5.0)
   rails (~> 7.0.0)
   sprockets-rails

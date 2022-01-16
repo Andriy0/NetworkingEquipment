@@ -1,28 +1,12 @@
 .container.text-center
-  
-  %h1.mb-3.display-5.text-secondary Adapters
+  %h1.display-5.text-secondary.mb-5 Adapters
 
-  -# = link_to 'New adapter', new_adapter_path, class: 'btn btn-primary btn-lg mb-5'
-
+.container
+  = pagination(@pagy)
+    
 .container-xl
   .row.justify-content-center
-    - @adapters.each do |adapter|
-      .col-sm-12.col-md-6.col-lg-4
-        %article.card.border-0.my-4.shadow
-          .card-body
-            %h4.card-title.mb-4.text-truncate= adapter.name
+    = render @adapters
 
-            %section.card-text
-              %p= adapter.vendor.name
-              %p= adapter.adapter_type.name
-              %p= adapter.connection_type.name
-
-            .container
-              .row.justify-content-center
-                .col-auto
-                  = link_to 'Show', adapter_path(adapter), class: 'btn btn-outline-primary'
-                .col-auto
-                  = link_to 'Edit', edit_adapter_path(adapter), class: 'btn btn-outline-secondary'
-                .col-auto
-                  = link_to 'Destroy', adapter_path(adapter), class: 'btn btn-outline-danger',
-                    data: {method: :delete, confirm: "Are you sure?"}
+.container.mt-3
+  = pagination(@pagy)

@@ -7,4 +7,11 @@
 
     = f.text_area :name, class: 'form-control'
 
-  = f.submit "#{btn_val}", class: 'btn btn-primary'
+  - if action_name == 'edit'
+    .container.row.justify-content-center
+      .col-auto
+        = f.submit 'Update', class: 'btn btn-outline-primary'
+      .col-auto
+        = link_to 'New', new_vendor_path, class: 'btn btn-outline-secondary'
+  - else
+    = f.submit 'Add', class: 'btn btn-outline-primary'

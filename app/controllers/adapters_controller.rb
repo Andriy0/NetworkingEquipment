@@ -1,8 +1,10 @@
 class AdaptersController < ApplicationController
-  before_action :set_adapter!, only: %i[ edit update destroy show ]
+  before_action :set_adapter!, only: %i[edit update destroy show]
   
   def index
-    @adapters = Adapter.order created_at: :desc
+    @pagy, @adapters = pagy Adapter.order(created_at: :desc), page: adapter_restore_page
+    
+    remember_page
   end
 
   def new
@@ -21,6 +23,7 @@ class AdaptersController < ApplicationController
   end
 
   def edit
+    remember_action
   end
 
   def update
@@ -39,6 +42,7 @@ class AdaptersController < ApplicationController
   end
 
   def show
+    remember_action
   end
 
   private

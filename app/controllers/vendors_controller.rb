@@ -1,12 +1,16 @@
 class VendorsController < ApplicationController
-  before_action :set_vendor!, only: %i{ edit update destroy }
+  before_action :set_vendor!, only: %i[edit update destroy]
+  before_action :fetch_vendors!, only: %i[index new]
   
   def index
-    @vendors = Vendor.all
+    @vendor ||= Vendor.new
+    
+    remember_page
   end
 
   def new
     @vendor = Vendor.new
+    render 'index'
   end
 
   def create
@@ -21,6 +25,11 @@ class VendorsController < ApplicationController
   end
 
   def edit
+    @pagy, @vendors = pagy Vendor.order(created_at: :desc), page: restore_page
+    
+    remember_page
+    
+    render 'index'
   end
 
   def update
@@ -47,5 +56,9 @@ class VendorsController < ApplicationController
   def set_vendor!
     @vendor = Vendor.find params[:id]
   end
-  
+
+  def fetch_vendors!
+    @pagy, @vendors = pagy Vendor.order(created_at: :desc)
+  end
+
 end

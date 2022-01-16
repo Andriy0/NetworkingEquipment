@@ -1,0 +1,19 @@
+.col-sm-12.col-md-6.col-lg-4
+  %article.card.border-0.my-4.shadow{id: "#{dom_id adapter}"}
+    .card-body
+      %h4.card-title.mb-4.text-truncate= adapter.name
+
+      %section.card-text
+        %p= adapter.vendor.name
+        %p= adapter.adapter_type.name
+        %p= adapter.connection_type.name
+
+      .container
+        .row.justify-content-center
+          .col-auto
+            = link_to 'Show', adapter_path(adapter), class: 'btn btn-outline-primary'
+          .col-auto
+            = link_to 'Edit', edit_adapter_path(adapter), class: 'btn btn-outline-secondary'
+          .col-auto
+            = link_to 'Destroy', adapter_path(adapter), class: 'btn btn-outline-danger',
+              data: {method: :delete, confirm: "Are you sure?"}
