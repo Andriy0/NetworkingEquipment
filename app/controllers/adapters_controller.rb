@@ -2,7 +2,8 @@ class AdaptersController < ApplicationController
   before_action :set_adapter!, only: %i[edit update destroy show]
   
   def index
-    @pagy, @adapters = pagy Adapter.order(created_at: :desc), page: adapter_restore_page
+    @pagy, @adapters = pagy Adapter.categorize(params[:vendor_id], params[:adapter_type_id], params[:connection_type_id]),
+      page: adapter_restore_page
     
     remember_page
   end

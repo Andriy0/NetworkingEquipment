@@ -1,6 +1,32 @@
 .container.text-center
   %h1.display-5.text-secondary.mb-5 Adapters
 
+.container.mb-4
+  = link_to 'Categories', '#categories_form',
+    class: 'btn btn-outline-primary mb-3', data: {'bs-toggle': 'collapse'}
+
+  = tag.div class: 'collapse', id: 'categories_form' do
+
+    = form_with url: root_path, method: :get do |f|
+      .mb-3.form-group
+        = f.label :vendor_id, class: 'mb-1'
+        = f.collection_select :vendor_id, Vendor.all, :id, :name,
+          {include_blank: true}, class: 'form-control'
+
+      .mb-3.form-group
+        = f.label :adapter_type_id, class: 'mb-1'
+        = f.collection_select :adapter_type_id, AdapterType.all, :id, :name,
+          {include_blank: true}, class: 'form-control'
+
+      .mb-3.form-group
+        = f.label :connection_type_id, class: 'mb-1'
+        = f.collection_select :connection_type_id, ConnectionType.all, :id, :name,
+          {include_blank: true}, class: 'form-control'
+
+      .form-group
+        = f.submit 'Search', class: 'btn btn-outline-primary'
+        = link_to 'All', root_path, class: 'btn btn-outline-secondary'
+
 .container
   = pagination(@pagy)
     
