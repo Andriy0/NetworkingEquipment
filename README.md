@@ -1,5 +1,8 @@
 # README
 
+<!-- badges -->
+[![CodeQL](https://github.com/Andriy0/NetworkingEquipment/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/Andriy0/NetworkingEquipment/actions/workflows/github-code-scanning/codeql)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
