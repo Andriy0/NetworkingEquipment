@@ -42,7 +42,7 @@ def populate_adapters_random(n)
   vendor_ids = Vendor.ids
   adapter_type_ids = AdapterType.ids
   connection_type_ids = ConnectionType.ids
-  
+
   n.times do
     name = Faker::Hipster.sentence word_count: 5
     vendor = Vendor.find(vendor_ids.sample(1)).first
@@ -52,8 +52,7 @@ def populate_adapters_random(n)
   end
 end
 
-
-# populate_vendor
-# populate_adapter_types
-# populate_connection_types
-# populate_adapters_random(30)
+populate_vendors
+populate_adapter_types
+populate_connection_types
+populate_adapters_random(30)
