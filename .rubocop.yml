@@ -1,0 +1,37 @@
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'db/schema.rb'
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Layout/HashAlignment:
+  Enabled: false
+
+# RSpec/MultipleExpectations:
+#   Max: 23
+
+# RSpec/MultipleMemoizedHelpers:
+#   Max: 15
+
+# RSpec/NestedGroups:
+#   Max: 5
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  # Specify the default preferred delimiter for all types with the 'default' key
+  # Override individual delimiters (even with default specified) by specifying
+  # an individual key
+  PreferredDelimiters:
+    default: ()
+    '%i': '()'
+    '%I': '()'
+    '%r': '{}'
+    '%w': '()'
+    '%W': '()'
