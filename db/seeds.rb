@@ -7,43 +7,43 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 def populate_vendors
-  %w[
+  %w(
     TP-Link
     ASUS
     D-Link
     NETGEAR
     Blueshadow
     HP
-  ].each do |name|
+  ).each do |name|
     Vendor.create name: name
   end
 end
 
 def populate_adapter_types
-  %w[
+  %w(
     internal
     external
-  ].each do |name|
+  ).each do |name|
     AdapterType.create name: name
   end
 end
 
 def populate_connection_types
-  %w[
+  %w(
     wired
     wireless
     wired/wireless
-  ].each do |name|
+  ).each do |name|
     ConnectionType.create name: name
   end
 end
 
-def populate_adapters_random(n)
+def populate_adapters_random(times)
   vendor_ids = Vendor.ids
   adapter_type_ids = AdapterType.ids
   connection_type_ids = ConnectionType.ids
 
-  n.times do
+  times.times do
     name = Faker::Hipster.sentence word_count: 5
     vendor = Vendor.find(vendor_ids.sample(1)).first
     adapter_type = AdapterType.find(adapter_type_ids.sample(1)).first
