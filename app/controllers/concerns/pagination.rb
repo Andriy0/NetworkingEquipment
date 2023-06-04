@@ -5,15 +5,15 @@ module Pagination
     private
 
     def remember_page
-      if params[:page]
-        session[:page] = params[:page]
-      end
+      return unless params[:page]
+
+      session[:page] = params[:page]
     end
 
     def restore_page
-      if session[:page]
-        session.delete(:page)
-      end
+      return unless session[:page]
+
+      session.delete(:page)
     end
 
     def remember_action
@@ -21,16 +21,14 @@ module Pagination
     end
 
     def adapter_restore_page
-      if session[:last_action]
-        if ['show', 'edit'].include?(session[:last_action])
-          last_action = session.delete(:last_action)
-          
-          if session[:page]
-            session[:page]
-          end
-        end
-      end
+      return unless session[:last_action]
+      return unless %w(show edit).include?(session[:last_action])
+
+      session.delete(:last_action)
+
+      return unless session[:page]
+
+      session[:page]
     end
-    
   end
 end

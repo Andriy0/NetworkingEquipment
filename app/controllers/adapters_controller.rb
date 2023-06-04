@@ -1,10 +1,11 @@
 class AdaptersController < ApplicationController
-  before_action :set_adapter!, only: %i[edit update destroy show]
-  
+  before_action :set_adapter!, only: %i(edit update destroy show)
+
   def index
-    @pagy, @adapters = pagy Adapter.categorize(params[:vendor_id], params[:adapter_type_id], params[:connection_type_id]),
-      page: adapter_restore_page
-    
+    @pagy, @adapters = pagy(Adapter
+                            .categorize(params[:vendor_id], params[:adapter_type_id], params[:connection_type_id]),
+                            page: adapter_restore_page)
+
     remember_page
   end
 
@@ -16,7 +17,7 @@ class AdaptersController < ApplicationController
     @adapter = Adapter.new adapter_params
 
     if @adapter.save
-      flash[:success] = "Adapter added!"
+      flash[:success] = 'Adapter added!'
       redirect_to root_path
     else
       render :new
@@ -29,7 +30,7 @@ class AdaptersController < ApplicationController
 
   def update
     if @adapter.update adapter_params
-      flash[:success] = "Adapter updated!"
+      flash[:success] = 'Adapter updated!'
       redirect_to adapter_path(@adapter)
     else
       render :edit
@@ -38,7 +39,7 @@ class AdaptersController < ApplicationController
 
   def destroy
     @adapter.destroy
-    flash[:success] = "Adapter deleted!"
+    flash[:success] = 'Adapter deleted!'
     redirect_to root_path
   end
 
@@ -55,5 +56,4 @@ class AdaptersController < ApplicationController
   def set_adapter!
     @adapter = Adapter.find params[:id]
   end
-  
 end
