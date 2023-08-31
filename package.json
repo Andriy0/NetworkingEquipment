@@ -5,7 +5,7 @@
     "@popperjs/core": "^2.11.8",
     "@rails/ujs": "^7.0.7",
     "bootstrap": "^5.3.1",
-    "sass": "^1.66.6",
+    "sass": "^1.66.1",
     "turbolinks": "^5.2.0",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
